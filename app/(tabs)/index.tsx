@@ -1,18 +1,24 @@
+import Card from "@/components/Card";
 import { View, Text, StyleSheet } from "react-native";
 
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text style={styles.text}>Soy home</Text>
+    <View style={styles.contenedor}>
+      <Card />
     </View>
   )
 };
 
 
 const styles = StyleSheet.create({
+  contenedor: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingHorizontal: 20,
+  },
   text: {
-    color: 'white',
+    color: '#1e1e1e',
   },
 });
 

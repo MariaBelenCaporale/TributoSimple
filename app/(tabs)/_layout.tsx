@@ -1,34 +1,54 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+
+import { Feather } from "@expo/vector-icons";
+import { Pressable } from 'react-native';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
+        tabBarActiveTintColor: "#db314a",
+        tabBarInactiveTintColor: "green",
+        headerShown: true,
+        headerTitle: '¡Hola María Belen!',
+        headerTitleStyle: {
+          color: '#F0F0F3',
+          fontSize: 20,
+          fontWeight: 'bold',
+          paddingHorizontal: 20,
+        },
+        headerStyle: {
+          backgroundColor: '#0047AF',
+          height: 120,
+          borderBottomLeftRadius: 30,
+          borderBottomRightRadius: 30,
+        },
+
+        headerRight: () => (
+          <Pressable>
+            <Feather name="bell" size={24} color="white" style={{ marginRight: 20 }} />
+          </Pressable>
+        ),
+        headerLeft: () => (
+          <Pressable>
+            <Feather name="align-left" size={24} color="white" style={{ marginLeft: 20 }} />
+          </Pressable>
+        ),
+        
+        tabBarStyle: {
+          backgroundColor: '#0047AF',
+
+        },
       }}>
+
+
       <Tabs.Screen
         name="index"
         options={{
+          tabBarStyle: { display: 'none' },
           title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
